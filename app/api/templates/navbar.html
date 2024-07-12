@@ -1,0 +1,50 @@
+<nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container-fluid">
+        <a class="navbar-brand" href="/home">Tweets</a>
+        <ul class= "navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class= "nav-link" href= "/home">Go Home</a>
+            </li>
+            <li class="nav-item">
+                <div>
+                    <h5 style = "color: white;">Get Tweets by Date</h5> 
+                    <form action="/tweets_by_date" method="get" class="d-flex" style="margin: 0.5em;">
+                        <input class="form-control form-control-sm me-2" type="date" name="start_date", value = "2018-01-01", aria-label="Start Date" required>
+                        <input class="form-control form-control-sm me-2" type="date" name="end_date" value = "2018-01-10", aria-label="End Date" required>
+                        <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div>
+                    <h5 style = "color: white;">Get Tweets by Keyword</h5>
+                    <form action = "/tweets_by_keyword" method = 'get' class = "d-flex" style="margin: 0.5m;">
+                        <input class = "form-control form-control-sm me-2" type="keyword" placeholder = "Search by Keyword" name = "keyword" aria-label="Keyword">
+                        <button class = "btn btn-outline-light, btn-sm" type = "submit">Search</button>
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div>
+                    <h5 style = "color: white;">Most Frequent Words</h5>
+                    <form action = "/most_frequent" method = 'get' class = "d-flex" style="margin: 0.5m;">
+                        <input class = "form-control form-control-sm me-2" type="keyword" placeholder = "Top N Words" name = "n" aria-label="Keyword">
+                        <button class = "btn btn-outline-light, btn-sm" type = "submit">Search</button>
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div>
+                    <h5 style = "color: white;">Similar Tweets</h5>
+                    <form action = "/similar_tweets" method = 'get' class = "d-flex" style="margin: 0.5m;">
+                        <input class = "form-control form-control-sm me-2" type="text" placeholder = "71000-76000" name = "tweet_id" aria-label="Keyword">
+                        <button class = "btn btn-outline-light, btn-sm" type = "submit">Search</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>

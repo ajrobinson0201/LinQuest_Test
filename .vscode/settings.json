@@ -1,0 +1,25 @@
+{
+    "python.pythonPath": "/Users/aaronrobinson/anaconda3/bin/python",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "PostgreSQL DB",
+            "database": "tweets_db",
+            "username": "aaron",
+            "password": "test"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "PostgreSQL DB2",
+            "database": "tweets_db",
+            "username": "aaronrobinson",
+            "password": "test"
+        }
+    ]
+}

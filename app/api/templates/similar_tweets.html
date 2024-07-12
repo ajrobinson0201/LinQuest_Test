@@ -1,0 +1,18 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+<h1>LinQuest Test Project</h1>
+<hr>
+<div class="target_tweet">
+    <p><strong>Target Tweet:</strong> {{ target_tweet.full_text }}</p>
+</div>
+<hr>
+{% for tweet in tweets %}
+    <div class="tweet">
+        <p><strong>Date:</strong> {{ tweet.created_at }}</p>
+        <p><strong>Full Text:</strong> {{ tweet.full_text }}</p>
+        <p><strong>Sentiment:</strong> {{ tweet.sentiment }} </p>
+    </div>
+    <hr>
+{% endfor %}
+
+{% include 'footer.html' %}
