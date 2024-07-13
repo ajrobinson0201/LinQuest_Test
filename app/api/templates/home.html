@@ -7,6 +7,10 @@
         <p><strong>Date:</strong> {{ tweet.created_at }}</p>
         <p><strong>Full Text:</strong> {{ tweet.full_text }}</p>
         <p><strong>Sentiment:</strong> {{ tweet.sentiment }} </p>
+        <form action = "/similar_tweets" method = 'get' class = "d-flex" style="margin: 0.5m;">
+            <input type = "hidden" name = "tweet_id" value = "{{ tweet.id }}">
+            <button class = "btn-sm" type = "submit">Find Similar Tweets</button>
+        </form>
     </div>
     <hr>
 {% endfor %}

@@ -111,7 +111,7 @@ def get_count(tweet_list, rank):
 
 # The next endpoint utilized the function above, get_count(), to find the top N (10 by defauly) most frequently used words
 @app.get("/most_frequent/")
-async def get_most_frequent(db:db_dependency, request: Request, n: int = 10):
+async def get_most_frequent(db:db_dependency, request: Request, n: int):
     # In order to begin at 0, but allow the user to type in the number they want to see, n has to equal 1 less than the input value
     n = n -1
     # Only use the cleaned 'text' value to prevent stop words, like 'the' to be chosen as the most common word
@@ -140,7 +140,7 @@ def cosine_similarity(vec1, vec2):
 
 # The final endpoint uses embedding and cosine similarity to find the top_n (defaulted at 10) tweets similar to a tweet given by ID (defaulted at 71000)
 @app.get("/similar_tweets/", response_model = List[Tweets])
-async def get_clusters(db:db_dependency, request:Request, tweet_id: int = 71000, top_n: int = 10):
+async def get_clusters(db:db_dependency, request:Request, tweet_id: int, top_n: int = 10):
     # the endpoint begins by querying the tweet that matches the ID given in the function above
     target_tweet = db.query(models.Tweets).filter(models.Tweets.id == tweet_id).first()
     # If the tweet id does not exist, an error will be raised
