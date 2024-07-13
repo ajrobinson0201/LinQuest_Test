@@ -1,14 +1,11 @@
 import json
 import os
-from time import strftime
-import spacy
-import psycopg2
 from datetime import datetime
-from textblob import TextBlob
+import psycopg2
+import spacy
 import torch
+from textblob import TextBlob
 from transformers import BertModel, BertTokenizer
-import numpy
-
 
 '''
 The following code is used to observe the first line of the data in order to figure out which values are relevant to the project
@@ -116,20 +113,20 @@ try:
     with open(file_path, 'r', encoding='utf-8') as file:
         for line in file:
             try:
-                # The data variable is assigned the parsed json text
-                data = json.loads(line)
-                data = data['document']
+                # The results variable is assigned the parsed json text
+                results = json.loads(line)
+                data = results['document']
                 # If full_text is not in the data, preserve the text from the 'text' value before 'text' gets cleaned and remove any single "'"
                 if 'full_text' not in data:
-                    data['full_text']= data['text'].replace("'", "")
+                    data['full_text']= data['text'].replace("'", "''")
                 else:
-                    data['full_text']= data['full_text'].replace("'", "")
+                    data['full_text']= data['full_text'].replace("'", "''")
                 # Use the clean_text function found above to clean the text data in data['document']
                 if 'text' in data:
                     data['text']= clean_text(data['text'])
                 # If the clean_text function removes all words from 'text', the array will end up being empty, which causes a diminsionality error.
                 # These next lines of code prevent the error at the cost of using the full, unedited text, which may slightly change the vector values, but 
-                # keeps the diminsionality above 0
+                # keeps the diminsionality greater than 0
                 if len(data['text']) != 0:
                     embedding_vector = get_embeddings(data['text'])
                 else:
@@ -137,14 +134,12 @@ try:
                 
                 # These next lines were useful for formatting the vector so that it would not cause issues loading into the database
                 embedding_vector = flatten_array(embedding_vector)
-                embedding_vector = embedding_vector.tolist()
-                embedding_vector = str(embedding_vector)
+                embedding_vector = str(embedding_vector.tolist())
                 
                 # Edit the created_at value into a more readable format
-                data['created_at'] = datetime.strptime(data['created_at'], "%a %b %d %H:%M:%S %z %Y")
-                data['created_at'] = data['created_at'].strftime("%Y-%m-%d")
+                date = datetime.strptime(data['created_at'], "%a %b %d %H:%M:%S %z %Y").strftime("%Y-%m-%d")
                 # Format the data so that they will be accepted into the VALUES section of the query
-                data['created_at'] = f"'{data['created_at']}'"
+                data['created_at'] = f"'{date}'"
                 data['lang'] = f"'{data['lang']}'"
                 data['text'] = f"'{data['text']}'"
                 if 'full_text' in data:
@@ -166,9 +161,8 @@ try:
                 # Format the sentiment category so that it will be accepted into the PostgreSQL database
                 sentiment = f"'{sentiment_category}'"
                 # Format the embedding_vector so that it will be accepted into the PostgreSQL database
-                if len(embedding_vector) ==0:
+                if len(embedding_vector) == 0:
                     embedding_vector = None
-                    print('None')
                 else:
                     embedding_vector = f"'{embedding_vector}'"
 
