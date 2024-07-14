@@ -110,4 +110,6 @@
 6. **similar_tweets.html**
 * **Description:** The similar_tweets.html files shares the exact same format as the home.html files, except that it adds a row at the top of the body of the web app for the target tweet that was selected by pressing the Find Similar Tweets button.
 
+**Docker**
+
 
