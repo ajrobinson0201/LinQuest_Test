@@ -43,8 +43,6 @@ which are all in the document section of the file. The text data will be cleaned
 removing stop words, which do not significantly impact the meaning of the text, and removing values that do not consist of alphabetic characters. 
 '''
 
-data_to_keep = ['created_at', 'text', 'full_text', 'lang']
-
 # Load in SpaCy for data cleaning
 nlp = spacy.load('en_core_web_sm')
 # Load in bert for embedding

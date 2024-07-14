@@ -17,7 +17,7 @@ import numpy as np
 import json
 
 '''
-The concepts that make up this file and the html files in the templates folder coem from the Udemy Courses: "Learn FastAPI, Python, REST APIs, Bootstrap, SQLite,
+The concepts that make up this file and the html files in the templates folder come from the Udemy Courses: "Learn FastAPI, Python, REST APIs, Bootstrap, SQLite,
 Jinja, and web security; all while creating 3 full-stack web apps" and REST APIs with Flask and Python in 2024"
 Code that represents the connection between the PostgreSQL Database and the APIs was based largely on Eric Roby's FastAPI Tutorial, "How to Build a FastAPI
 app with PostgreSQL"
@@ -34,13 +34,14 @@ models.Base.metadata.reflect(bind = engine)
 # Mount the static directory as a route to serve static files for the web page
 app.mount("/static", StaticFiles(directory = "static"), name = "static")
 
+'''
 # Create a class that represents the table in PostgreSQL
 class Tweets(BaseModel):
     created_at: date
     lang: str
     text: str
     full_text: str
-
+'''
 # Opens and closes the database session
 def get_db():
     db = SessionLocal()
@@ -140,7 +141,7 @@ def cosine_similarity(vec1, vec2):
 
 # The final endpoint uses embedding and cosine similarity to find the top_n (defaulted at 10) tweets similar to a tweet given by ID (defaulted at 71000)
 @app.get("/similar_tweets/", response_model = List[Tweets])
-async def get_clusters(db:db_dependency, request:Request, tweet_id: int, top_n: int = 10):
+async def get_clusters(db:db_dependency, request:Request, tweet_id: int, top_n: int):
     # the endpoint begins by querying the tweet that matches the ID given in the function above
     target_tweet = db.query(models.Tweets).filter(models.Tweets.id == tweet_id).first()
     # If the tweet id does not exist, an error will be raised
