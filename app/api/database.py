@@ -3,7 +3,6 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base 
 from datetime import datetime
 
-
 # This code comes straight from Eric Roby's FastAPI Tutorial, "How to Build a FastAPI app with PostgreSQL", which includes hwo to set up the database locally
 URL_DATABASE = 'postgresql://aaronrobinson:test@localhost:5432/tweets_db'
 
