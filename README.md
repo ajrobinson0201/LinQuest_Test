@@ -92,7 +92,7 @@
 1. **Similar Tweets**
 * **URL:** "/similar_tweets/"
 * **Method:** GET
-* **Description:** When the user presses the "Find Similar Tweets" button, which is displayed in each tweet object on the web page, the web app displays tweets that are deemed similar to the selected tweet based on the embedding vector that is assigned to each tweet.
+* **Description:** When the user presses the "Find Similar Tweets" button, which is displayed in each tweet object on the web page, the web app displays the top 10 tweets that are deemed similar to the selected tweet based on the embedding vector that is assigned to each tweet.
 
 **Templates**
 
