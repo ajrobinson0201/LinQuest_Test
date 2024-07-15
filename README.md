@@ -42,8 +42,9 @@
 **Getting Started**
 
 *Library Installation:*
-* pip install psycopg2 spacy torch textblob transformers sqlalchemy pydantic fastapi starlette jinja2 nltk numpy
-* python -m spacy download en_core_web_sm
+* The Docker should install all necessary libraries from the requirements.txt file, but in the case that the use wants to manually install, the following code will install the necessary libraries:
+    * pip install psycopg2 spacy torch textblob transformers sqlalchemy pydantic fastapi starlette jinja2 nltk numpy
+    * python -m spacy download en_core_web_sm
 
 *Creating the Database*
 * For users on Visual Studio Code, go to the extensions tab and install the SQLTools and PostgreSQL extensions. 
@@ -112,4 +113,10 @@
 
 **Docker**
 
+*Installation*
+* Go to https://docs.docker.com/desktop/ and click to install
 
+*Usage*
+* In the CLI, run docker compose up --build to load up the libraries from the requirements.txt file
+* In the CLI, run uvicorn app.api.main:app --reload
+* The web app will load up at http://127.0.0.1:8000 
