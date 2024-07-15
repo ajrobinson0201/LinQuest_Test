@@ -71,11 +71,11 @@ tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 def get_embeddings(text):
     # Split the text into single word tokens
     tokens = tokenizer.tokenize(text)
-    # Convert the tokens into id coutnerparts
+    # Convert the tokens into id counterparts
     indexed_tokens = tokenizer.convert_tokens_to_ids(tokens)
     # Add a batch dimension so that the tokens can be fed through the bert model
     tokens_tensor = torch.tensor([indexed_tokens])
-    # Prevents tracking gradients, which reduces memory usage and speeds us computations
+    # Prevents tracking gradients, which reduces memory usage and speeds up computations
     with torch.no_grad():
         # Create a variable that contains all of the elements produced by the bert model
         outputs = bert(tokens_tensor)

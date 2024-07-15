@@ -151,9 +151,8 @@ async def get_similar_tweets(db:db_dependency, request:Request, tweet_id: int, t
         raise HTTPException(status_code= 404, detail = "Tweet not found")
     
     # Here, the target tweet is identified and begins to be formatted
-    target_vector = target_tweet.embedding_vector
-    # Formatting the vectors turned in to a multi line process, but the next three lines seemed to get the vector in the correct format for cosine similarity
-    target_vector_str = target_vector
+    target_vector_str = target_tweet.embedding_vector
+    # Formatting the vectors turned in to a multi line process, but the next two lines seemed to get the vector in the correct format for cosine similarity
     target_vector_list = json.loads(target_vector_str)
     target_vector = np.array(target_vector_list, dtype = float)
 
