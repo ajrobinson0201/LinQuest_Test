@@ -77,19 +77,19 @@
 * **URL:** "/home/"
 * **Method:** GET
 * **Description:** Acts as a homepage for the web app. It displays the 10 most recent tweets in the database
-1. **Tweets By Date**
+3. **Tweets By Date**
 * **URL:** "/tweets_by_date/"
 * **Method:** GET
 * **Description:** Allows the user to input two data values and retrieves the tweets that fall between those two dates, including the tweets that occured on those dates
-1. **Tweets By Keyword**
+4. **Tweets By Keyword**
 * **URL:** "/tweets_by_keyword/"
 * **Method:** GET
 * **Description:** Allows the user to input a word value and retrieves tweets that contain the given value
-1. **Most Frequent Words**
+5. **Most Frequent Words**
 * **URL:** "/most_frequent/"
 * **Method:** GET
 * **Description:** Allows the user to input an integer value and retrieves the input number of most frequently used words in the database and displays each of  the words and the number of times it was used. 
-1. **Similar Tweets**
+6. **Similar Tweets**
 * **URL:** "/similar_tweets/"
 * **Method:** GET
 * **Description:** When the user presses the "Find Similar Tweets" button, which is displayed in each tweet object on the web page, the web app displays the top 10 tweets that are deemed similar to the selected tweet based on the embedding vector that is assigned to each tweet.
